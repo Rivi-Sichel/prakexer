@@ -1,0 +1,164 @@
+/* List.css */
+
+/* Table Styles */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  table-layout: fixed; /* Crucial for consistent columns */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #555;
+  padding: 16px 12px;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.main-contact {
+  text-align: center;
+}
+
+/* Contact Details Icons */
+.contact-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.contact-icon {
+  cursor: pointer;
+  color: #757575;
+  font-size: 18px; /* Increase icon size */
+  transition: color 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #2196f3;
+}
+
+/* Action button */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  color: #757575;
+}
+
+.action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Styling for icons column */
+td:nth-child(5), td:nth-child(6) {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+td:nth-child(5) {
+  color: #ffc107;
+}
+
+td:nth-child(6) {
+  padding: 10px;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Border for the table */
+table {
+  border: 1px solid #e0e0e0;
+}
+
+/* Table container */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* General page style */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #f8f8f8;
+  margin: 20px;
+}
+
+/* Centering icons in the table cell */
+.contact-icons {
+  display: flex;
+  justify-content: center; /* Centers the icons horizontally */
+  align-items: center; /* Centers the icons vertically */
+  gap: 12px; /* Space between icons */
+  padding: 4px 0; /* Adding padding for better spacing */
+}
+/* Table cell styling for centered content */
+
+
+/* Styling for odd/even rows */
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 40px; /* הגדרת גודל תמונה */
+  height: 40px;
+  border-radius: 50%; /* מעגל את התמונה */
+  object-fit: cover; /* שומר על פרופורציות התמונה */
+  border: 2px solid #ddd; /* הוספת גבול לתמונה */
+}
+/* Contact Icons */
+.contact-icons {
+  display: flex; /* לאפשר שימוש ב-Flexbox */
+  justify-content: center; /* ממרכז את האייקונים על הציר האופקי */
+  align-items: center; /* ממרכז אותם אנכית */
+  gap: 12px; /* רווח בין האייקונים */
+}
+
+
+.contact-icon:hover {
+  color: #2196f3;
+}
+tr {
+  height: 50px; /* או גובה אחר שיתאים לתוכן שלך */
+}
+
+td {
+  height: 100%; /* כדי למלא את גובה השורה */
+  vertical-align: middle;
+}

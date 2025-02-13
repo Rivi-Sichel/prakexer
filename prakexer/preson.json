@@ -1,0 +1,308 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "Michael",
+      "lastName": "Cohen",
+      "role": "Senior Engineer",
+      "contactType": "Freelancer",
+      "address": "Flat 3, HaShalom 45, Tel Aviv",
+      "tags": ["Maintenance", "Repairs"],
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {"number": "054-7896543", "type": "Work"},
+          {"number": "03-5678901", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "michael.cohen@engineer.com", "type": "Work"},
+          {"email": "mikecohen@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Halapid 9",
+      "billingInformation": "Halapid 9",
+      "accountingRef": "88888",
+      "vatNumber": "587974",
+      "src": "../images/1.jpg"
+    },
+    {
+      "id": 2,
+      "isMain": 0,
+      "isActive": 0,
+      "firstName": "Sarah",
+      "lastName": "Levi",
+      "role": "Project Manager",
+      "contactType": "Employee",
+      "address": "Floor 2, King George 10, Tel Aviv",
+      "tags": ["Security", "Renovation"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-1234567", "type": "Work"},
+          {"number": "03-2345678", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "sarah.levi@company.com", "type": "Work"},
+          {"email": "sarah.levi@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "King George 10, Tel Aviv",
+      "billingInformation": "King George 10, Tel Aviv",
+      "accountingRef": "77777",
+      "vatNumber": "123456",
+      "src": "../images/2.jpg"
+    },
+    {
+      "id": 3,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "David",
+      "lastName": "Green",
+      "role": "Building Manager",
+      "contactType": "Employee",
+      "address": "Building A, HaShalom 22, Tel Aviv",
+      "tags": ["Property Manager", "Security"],
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {"number": "054-3216547", "type": "Work"},
+          {"number": "03-3456789", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "david.green@building.com", "type": "Work"},
+          {"email": "davidgreen@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Building A, HaShalom 22, Tel Aviv",
+      "billingInformation": "Building A, HaShalom 22, Tel Aviv",
+      "accountingRef": "99999",
+      "vatNumber": "234567",
+      "src": "../images/3.jpg"
+    },
+    {
+      "id": 4,
+      "isMain": 0,
+      "isActive": 1,
+      "firstName": "Rachel",
+      "lastName": "Bar",
+      "role": "Tenant",
+      "contactType": "Resident",
+      "address": "Apartment 5, King George 10, Tel Aviv",
+      "tags": ["Tenant", "Fire Safety"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-9876543", "type": "Work"},
+          {"number": "03-2345678", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "rachel.bar@tenant.com", "type": "Work"},
+          {"email": "rachelbar@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Apartment 5, King George 10, Tel Aviv",
+      "billingInformation": "Apartment 5, King George 10, Tel Aviv",
+      "accountingRef": "54321",
+      "vatNumber": "678901",
+      "src": "../images/4.jpg"
+    },
+    {
+      "id": 5,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "Daniel",
+      "lastName": "Shapiro",
+      "role": "Cleaning Staff",
+      "contactType": "Employee",
+      "address": "Building B, HaShalom 10, Tel Aviv",
+      "tags": ["Cleaning", "Maintenance"],
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {"number": "054-7891234", "type": "Work"},
+          {"number": "03-9876543", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "daniel.shapiro@cleaning.com", "type": "Work"},
+          {"email": "danielshapiro@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Building B, HaShalom 10, Tel Aviv",
+      "billingInformation": "Building B, HaShalom 10, Tel Aviv",
+      "accountingRef": "55555",
+      "vatNumber": "987654",
+      "src": "../images/5.jpg"
+    },
+    {
+      "id": 6,
+      "isMain": 0,
+      "isActive": 0,
+      "firstName": "Maya",
+      "lastName": "Cohen",
+      "role": "Visitor",
+      "contactType": "Visitor",
+      "address": "N/A",
+      "tags": ["Visitor", "Inspection"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-1357913", "type": "Work"}
+        ],
+        "emails": [
+          {"email": "maya.cohen@visitor.com", "type": "Work"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "N/A",
+      "billingInformation": "N/A",
+      "accountingRef": "1234",
+      "vatNumber": "9876",
+      "src": "../images/6.jpg"
+    },
+    {
+      "id": 7,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "Tom",
+      "lastName": "Azoulay",
+      "role": "Maintenance Technician",
+      "contactType": "Employee",
+      "address": "Floor 3, HaShalom 25, Tel Aviv",
+      "tags": ["Repairs", "Maintenance"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "054-2345678", "type": "Work"},
+          {"number": "03-9876543", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "tom.azoulay@maintenance.com", "type": "Work"},
+          {"email": "tomazoulay@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Floor 3, HaShalom 25, Tel Aviv",
+      "billingInformation": "Floor 3, HaShalom 25, Tel Aviv",
+      "accountingRef": "121212",
+      "vatNumber": "998877",
+      "src": "../images/7.jpg"
+    },
+    {
+      "id": 8,
+      "isMain": 0,
+      "isActive": 0,
+      "firstName": "Shir",
+      "lastName": "Rosen",
+      "role": "Contractor",
+      "contactType": "Freelancer",
+      "address": "N/A",
+      "tags": ["Renovation", "Security"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-9876543", "type": "Work"}
+        ],
+        "emails": [
+          {"email": "shir.rosen@contractor.com", "type": "Work"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "N/A",
+      "billingInformation": "N/A",
+      "accountingRef": "0001",
+      "vatNumber": "23456",
+      "src": "../images/8.jpg"
+    },
+    {
+      "id": 9,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "Yonatan",
+      "lastName": "Levi",
+      "role": "Project Coordinator",
+      "contactType": "Employee",
+      "address": "Floor 5, King George 15, Tel Aviv",
+      "tags": ["Inspection", "Fire Safety"],
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {"number": "054-5678901", "type": "Work"},
+          {"number": "03-1234567", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "yonatan.levi@company.com", "type": "Work"},
+          {"email": "yonatanlevi@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Floor 5, King George 15, Tel Aviv",
+      "billingInformation": "Floor 5, King George 15, Tel Aviv",
+      "accountingRef": "223344",
+      "vatNumber": "667788",
+      "src": "../images/9.jpg"
+    },
+    {
+      "id": 10,
+      "isMain": 0,
+      "isActive": 0,
+      "firstName": "Lior",
+      "lastName": "Dahan",
+      "role": "Resident",
+      "contactType": "Resident",
+      "address": "Apartment 8, HaShalom 33, Tel Aviv",
+      "tags": ["Tenant", "Parking"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-1352468", "type": "Work"},
+          {"number": "03-2468101", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "lior.dahan@tenant.com", "type": "Work"},
+          {"email": "liordahan@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Apartment 8, HaShalom 33, Tel Aviv",
+      "billingInformation": "Apartment 8, HaShalom 33, Tel Aviv",
+      "accountingRef": "123456",
+      "vatNumber": "987654",
+      "src": "../images/10.jpg"
+    },
+    {
+      "id": 11,
+      "isMain": 1,
+      "isActive": 1,
+      "firstName": "Oren",
+      "lastName": "Berman",
+      "role": "Building Security",
+      "contactType": "Employee",
+      "address": "Building C, HaShalom 12, Tel Aviv",
+      "tags": ["Security", "Fire Safety"],
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {"number": "054-6549872", "type": "Work"},
+          {"number": "03-8765432", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "oren.berman@security.com", "type": "Work"},
+          {"email": "orenberman@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Building C, HaShalom 12, Tel Aviv",
+      "billingInformation": "Building C, HaShalom 12, Tel Aviv",
+      "accountingRef": "556677",
+      "vatNumber": "112233",
+      "src": "../images/11.jpg"
+    }
+  ]
+}
