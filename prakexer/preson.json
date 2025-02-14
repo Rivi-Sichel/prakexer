@@ -3,7 +3,7 @@
     {
       "id": 1,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "Michael",
       "lastName": "Cohen",
       "role": "Senior Engineer",
@@ -22,8 +22,8 @@
         ],
         "country": "Israel"
       },
-      "mailingAddress": "Halapid 9",
       "billingInformation": "Halapid 9",
+      "mailingAddress": "Halapid 9",
       "accountingRef": "88888",
       "vatNumber": "587974",
       "src": "../images/1.jpg"
@@ -31,7 +31,7 @@
     {
       "id": 2,
       "isMain": 0,
-      "isActive": 0,
+      "isActive": "false",
       "firstName": "Sarah",
       "lastName": "Levi",
       "role": "Project Manager",
@@ -48,7 +48,7 @@
           {"email": "sarah.levi@company.com", "type": "Work"},
           {"email": "sarah.levi@gmail.com", "type": "Private"}
         ],
-        "country": "Israel"
+        "country": "United States"
       },
       "mailingAddress": "King George 10, Tel Aviv",
       "billingInformation": "King George 10, Tel Aviv",
@@ -59,7 +59,7 @@
     {
       "id": 3,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "David",
       "lastName": "Green",
       "role": "Building Manager",
@@ -76,7 +76,7 @@
           {"email": "david.green@building.com", "type": "Work"},
           {"email": "davidgreen@gmail.com", "type": "Private"}
         ],
-        "country": "Israel"
+        "country": "Germany"
       },
       "mailingAddress": "Building A, HaShalom 22, Tel Aviv",
       "billingInformation": "Building A, HaShalom 22, Tel Aviv",
@@ -87,7 +87,7 @@
     {
       "id": 4,
       "isMain": 0,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "Rachel",
       "lastName": "Bar",
       "role": "Tenant",
@@ -104,7 +104,7 @@
           {"email": "rachel.bar@tenant.com", "type": "Work"},
           {"email": "rachelbar@gmail.com", "type": "Private"}
         ],
-        "country": "Israel"
+        "country": "United States"
       },
       "mailingAddress": "Apartment 5, King George 10, Tel Aviv",
       "billingInformation": "Apartment 5, King George 10, Tel Aviv",
@@ -115,7 +115,7 @@
     {
       "id": 5,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "false",
       "firstName": "Daniel",
       "lastName": "Shapiro",
       "role": "Cleaning Staff",
@@ -143,7 +143,7 @@
     {
       "id": 6,
       "isMain": 0,
-      "isActive": 0,
+      "isActive": "true",
       "firstName": "Maya",
       "lastName": "Cohen",
       "role": "Visitor",
@@ -160,8 +160,8 @@
         ],
         "country": "Israel"
       },
-      "mailingAddress": "N/A",
-      "billingInformation": "N/A",
+      "mailingAddress": "",
+      "billingInformation": "",
       "accountingRef": "1234",
       "vatNumber": "9876",
       "src": "../images/6.jpg"
@@ -169,7 +169,7 @@
     {
       "id": 7,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "Tom",
       "lastName": "Azoulay",
       "role": "Maintenance Technician",
@@ -186,7 +186,7 @@
           {"email": "tom.azoulay@maintenance.com", "type": "Work"},
           {"email": "tomazoulay@gmail.com", "type": "Private"}
         ],
-        "country": "Israel"
+        "country": "Germany"
       },
       "mailingAddress": "Floor 3, HaShalom 25, Tel Aviv",
       "billingInformation": "Floor 3, HaShalom 25, Tel Aviv",
@@ -197,7 +197,7 @@
     {
       "id": 8,
       "isMain": 0,
-      "isActive": 0,
+      "isActive": "false",
       "firstName": "Shir",
       "lastName": "Rosen",
       "role": "Contractor",
@@ -223,7 +223,7 @@
     {
       "id": 9,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "Yonatan",
       "lastName": "Levi",
       "role": "Project Coordinator",
@@ -251,7 +251,7 @@
     {
       "id": 10,
       "isMain": 0,
-      "isActive": 0,
+      "isActive": false,
       "firstName": "Lior",
       "lastName": "Dahan",
       "role": "Resident",
@@ -279,7 +279,7 @@
     {
       "id": 11,
       "isMain": 1,
-      "isActive": 1,
+      "isActive": "true",
       "firstName": "Oren",
       "lastName": "Berman",
       "role": "Building Security",
@@ -303,6 +303,34 @@
       "accountingRef": "556677",
       "vatNumber": "112233",
       "src": "../images/11.jpg"
+    },
+    {
+      "id": 12,
+      "isMain": 0,
+      "isActive": "true",
+      "firstName": "Yaara",
+      "lastName": "Tzukrel",
+      "role": "Resident",
+      "contactType": "Resident",
+      "address": "Apartment 3, King George 5, Tel Aviv",
+      "tags": ["Tenant", "Maintenance"],
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {"number": "052-7771234", "type": "Work"},
+          {"number": "03-6543210", "type": "Home"}
+        ],
+        "emails": [
+          {"email": "yaara.tzukrel@tenant.com", "type": "Work"},
+          {"email": "yaaratzukrel@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
+      },
+      "mailingAddress": "Apartment 3, King George 5, Tel Aviv",
+      "billingInformation": "Apartment 3, King George 5, Tel Aviv",
+      "accountingRef": "223344",
+      "vatNumber": "556677",
+      "src": "../images/12.jpg"
     }
   ]
 }

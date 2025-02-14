@@ -1,18 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-
 const initialState = {
   arr: [],
   thisContact: null
 }
-
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  //פעולות קיימות בslice
   reducers: {
     selectContact: (state, action) => {
-      //piload הוא 
       state.thisContact = action.payload;
     },
     updateContact: (state, action) => {
@@ -22,7 +17,7 @@ const contactsSlice = createSlice({
       }
     },
     addContact: (state, action) => {
-        state.arr.push(action.payload)
+      state.arr.push(action.payload)
     },
     insertData: (state, action) => {
       state.arr = action.payload;
@@ -30,12 +25,12 @@ const contactsSlice = createSlice({
     changeStar: (state, action) => {
       const index = state.arr.findIndex(c => c.id === action.payload.id);
       if (index !== -1) {
-        state.arr[index].isMain = state.arr[index].isMain == 1 ? 0 : 1;
+        const newIsMain = action.payload.isMain === 1 ? 1 : 0;
+        state.arr[index].isMain = newIsMain;
       }
     }
-
   },
 });
 
-export const { selectContact, updateContact, addContact, insertData ,changeStar} = contactsSlice.actions;
+export const { selectContact, updateContact, addContact, insertData, changeStar } = contactsSlice.actions;
 export default contactsSlice.reducer;

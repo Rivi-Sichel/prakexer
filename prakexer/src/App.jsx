@@ -1,11 +1,9 @@
 import './App.css'
 import List from './List'
-
 import contactsData from '../preson.json';
 import { useDispatch } from "react-redux"
 import { insertData } from "../app/contactsSlice"
 import { useEffect } from 'react';
-// import Panel from './Panel';
 function App() {
   let dispatch = useDispatch()
   useEffect(() => {
@@ -21,17 +19,13 @@ function App() {
         console.error("Error fetching contacts:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-  
-
 
   return (
     <>
       <List />
-      {/* <Panel  /> */}
     </>
   )
 }
