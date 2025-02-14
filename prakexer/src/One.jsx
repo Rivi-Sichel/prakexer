@@ -8,14 +8,16 @@ import './List.css';
 import { useDispatch } from 'react-redux';
 import { changeStar } from '../app/contactsSlice';
 
+//קומפוננטה שמקבלת איש קשר ומציגה אותה
+//לפי הנתונים שנמצאים בקובץ ג'ייסון
+
 const One = (props) => {
     const { contact, openContactDetails } = props;
-
     const [value, setValue] = useState(contact.isMain);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedContact, setSelectedContact] = useState(null);
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
     const handleOpenContactDetails = (contact) => {
         setSelectedContact(contact);
         setIsModalOpen(true);

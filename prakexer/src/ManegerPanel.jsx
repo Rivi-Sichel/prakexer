@@ -6,6 +6,7 @@ import { Box, Drawer, Typography, IconButton, TextField, Button, Divider, Avatar
 import { Add as AddIcon, Close as CloseIcon, Edit as EditIcon, ExpandMore as ExpandMoreIcon, Phone as PhoneIcon, Mail as MailIcon } from '@mui/icons-material';
 import Flag from 'react-world-flags';
 
+
 const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false);
@@ -13,14 +14,15 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         defaultValues: item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } }
     });
     const itemto = item;
-
     const previousItemRef = useRef();
+
 
     useEffect(() => {
         reset(item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } });
         previousItemRef.current = item;
     }, [item, reset]);
 
+    //פונקציה ששולחת ושומרת את הנתונים
     const onSubmit = (data) => {
         if (!itemto) {
             const lastId = state.arr.length ? state.arr[state.arr.length - 1].id : 0;
@@ -37,11 +39,13 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         closeContactDetails();
     };
 
+    //פונקציה שסוגרת את החלון
     const closeContactDetails = () => {
         setIsModalOpen(false);
         setIsEditing(false);
     };
 
+    //פונקציה שסוגרת את החלון מcancel
     const onCancel = () => {
         reset(item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } });
         setIsEditing(false);
@@ -73,6 +77,10 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         }
     };
 
+    //פונקציה שמופעלת על אובייקט שמועבר אליה בפרופס.
+    //אם היא קיבלה אוביקט שהוא null - נותנת לערוך את השדות
+    //אם היא קיבלה אובייקט היא מציגה את הנתונים שלו
+    //חלקם ניתנים לעריכה וחלקם לא
     const renderEditMode = () => (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2, position: 'relative' }}>
@@ -90,7 +98,6 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                     />
                 </IconButton>
             </Box>
-
             <TextField
                 disabled={itemto}
                 label="First Name"
@@ -242,6 +249,8 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         </form>
     );
 
+    //פונקציה שמופעלת על פרמטר שמתקבל בפרופס ומציגה לו את כל הנתונים
+    //יש לה כפתור שמוביל לעריכה של הטופס
     const renderViewMode = () => (
         <Box sx={{ p: 2 }}>
             <Avatar sx={{ width: 80, height: 80, mb: 2, mx: 'auto' }} >
@@ -297,6 +306,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 <IconButton onClick={closeContactDetails} sx={{ position: 'absolute', top: 8, right: 8 }}>
                     <CloseIcon />
                 </IconButton>
+                אם אתה על מצב עריכה או שאין לך אובייקט - תפעיל את העריכה- אחרת תציג את מצב ההצגה
                 {isEditing || !item ? renderEditMode() : renderViewMode()}
             </Box>
         </Drawer>

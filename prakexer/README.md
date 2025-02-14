@@ -20,8 +20,15 @@
 
 ## התקנה
 
+
+## השגות/הערות 
+##  הנחתי שלכל אחד יש בקובץ הג'ייסון יש גם את התגים וגם את סטטוס הפעילות
+## ולכן הכנסתי לכל אחד בקובץ את הנתונים האלו
+## ובהוספת איש קשר חדש הכנסתי נתונים ברירית מחדל
+
+
 כדי להתחיל עם הפרויקט, בצע את הצעדים הבאים:
 
 1. העתק את המאגר:
    ```bash
-   git clone  https://github.com/Rivi-Sichel/prakexer/tree/main/prakexer/src
+   git clone  https://github.com/Rivi-Sichel/prakexer/tree/main/prakexer

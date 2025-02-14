@@ -75,7 +75,7 @@ const FilterMenu = ({ onFilter }) => {
                             Clear all
                         </Button>
                     </Box>
-
+                    {/* מפעילה חיפוש על סוג האיש קשר */}
                     <Typography variant="body2" mt={2}>Contact Type</Typography>
                     <Select fullWidth value={filters.contactType} onChange={(e) => setFilters({ ...filters, contactType: e.target.value })}>
                         <MenuItem value="All">All</MenuItem>
@@ -84,6 +84,8 @@ const FilterMenu = ({ onFilter }) => {
                         <MenuItem value="Resident">Resident</MenuItem>
                     </Select>
 
+                    {/* מפעילה חיפוש על סוג התגים */}
+
                     <Typography variant="body2" mt={2}>Tags</Typography>
                     <Select fullWidth value={filters.tags} onChange={(e) => setFilters({ ...filters, tags: e.target.value })}>
                         <MenuItem value="All">All</MenuItem>
@@ -91,6 +93,9 @@ const FilterMenu = ({ onFilter }) => {
                         <MenuItem value="Renovation">Renovation</MenuItem>
                         <MenuItem value="Fire Safety">Fire Safety</MenuItem>
                     </Select>
+
+                    {/* מפעילה חיפוש על סטטוס הפעילות של האיש */}
+
 
                     <Typography variant="body2" mt={2}>Active Contact</Typography>
                     <Select
@@ -108,6 +113,8 @@ const FilterMenu = ({ onFilter }) => {
                         <MenuItem value="true">Yes</MenuItem>
                         <MenuItem value="false">No</MenuItem>
                     </Select>
+
+                    {/* מבצעת סינון בן אנשים ראשיים , לשאינם */}
 
                     <Typography variant="body2" mt={2}>Main Contact</Typography>
                     <Switch

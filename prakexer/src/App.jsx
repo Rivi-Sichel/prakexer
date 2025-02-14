@@ -6,6 +6,7 @@ import { insertData } from "../app/contactsSlice"
 import { useEffect } from 'react';
 function App() {
   let dispatch = useDispatch()
+  //מוציאים את התוכן של הג'ייסון ומכניסות לרידקס
   useEffect(() => {
     const fetchData = async () => {
       try {
