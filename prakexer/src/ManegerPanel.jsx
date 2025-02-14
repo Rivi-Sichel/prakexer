@@ -306,7 +306,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 <IconButton onClick={closeContactDetails} sx={{ position: 'absolute', top: 8, right: 8 }}>
                     <CloseIcon />
                 </IconButton>
-                אם אתה על מצב עריכה או שאין לך אובייקט - תפעיל את העריכה- אחרת תציג את מצב ההצגה
+                {/* אם אתה על מצב עריכה או שאין לך אובייקט - תפעיל את העריכה- אחרת תציג את מצב ההצגה */}
                 {isEditing || !item ? renderEditMode() : renderViewMode()}
             </Box>
         </Drawer>

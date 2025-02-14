@@ -3,6 +3,9 @@ import { Popover, IconButton, Box, Typography, MenuItem, Select, Switch, Button 
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import CloseIcon from "@mui/icons-material/Close";
 
+//קומפוננטת חיפוש
+//מאפשרת לחפש ע"פ כמה פרמטרים
+
 const FilterMenu = ({ onFilter }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [filters, setFilters] = useState({
