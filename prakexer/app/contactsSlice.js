@@ -17,8 +17,11 @@ const contactsSlice = createSlice({
       }
     },
     addContact: (state, action) => {
-      state.arr.push(action.payload)
+      const lastId = state.arr.length ? Math.max(...state.arr.map(c => c.id)) : 0; 
+      const newContact = { ...action.payload, id: lastId + 1 }; 
+      state.arr.push(newContact); 
     },
+    
     insertData: (state, action) => {
       state.arr = action.payload;
     },

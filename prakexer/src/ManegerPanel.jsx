@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { updateContact, addContact } from '../app/contactsSlice';
+import { updateContact, addContact, changeStar } from '../app/contactsSlice';
 import { Box, Drawer, Typography, IconButton, TextField, Button, Divider, Avatar, Select, MenuItem, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { Add as AddIcon, Close as CloseIcon, Edit as EditIcon, ExpandMore as ExpandMoreIcon, Phone as PhoneIcon, Mail as MailIcon } from '@mui/icons-material';
 import Flag from 'react-world-flags';
-
 
 const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
     const dispatch = useDispatch();
@@ -14,19 +13,26 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         defaultValues: item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } }
     });
     const itemto = item;
-    const previousItemRef = useRef();
 
+    const previousItemRef = useRef();
+    let isMod = isModalOpen;
 
     useEffect(() => {
         reset(item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } });
         previousItemRef.current = item;
     }, [item, reset]);
 
+    const { fields: phoneFields, append: phoneAppend, remove: phoneRemove } = useFieldArray({
+        control, name: "contactDetails.phoneNumbers"
+    });
+    const { fields: emailFields, append: emailAppend, remove: emailRemove } = useFieldArray({
+        control, name: "contactDetails.emails"
+    });
+
+
     //פונקציה ששולחת ושומרת את הנתונים
     const onSubmit = (data) => {
         if (!itemto) {
-            const lastId = state.arr.length ? state.arr[state.arr.length - 1].id : 0;
-            data.id = lastId + 1;
             data.isMain = 1;
             data.isActive = true;
         }
@@ -39,13 +45,12 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         closeContactDetails();
     };
 
-    //פונקציה שסוגרת את החלון
+
     const closeContactDetails = () => {
         setIsModalOpen(false);
         setIsEditing(false);
     };
 
-    //פונקציה שסוגרת את החלון מcancel
     const onCancel = () => {
         reset(item || { contactDetails: { phoneNumbers: [], emails: [], country: '', mailingAddress: '', billingInformation: '', preferredLanguage: '' } });
         setIsEditing(false);
@@ -77,12 +82,79 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
         }
     };
 
+
+    //     //פונקציה שמופעלת על פרמטר שמתקבל בפרופס ומציגה לו את כל הנתונים
+    //     //יש לה כפתור שמוביל לעריכה של הטופס
+
+    const renderViewMode = () => (
+        <Box sx={{ p: 2 }}>
+            <Avatar sx={{ width: 80, height: 80, mb: 2, mx: 'auto' }} >
+                <img src={item?.src} alt="Avatar" />
+            </Avatar>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'center' }}>Contact Details</Typography>
+            {console.log(item.isMain)
+            }
+            <Typography variant="body2" sx={{ textAlign: 'center', color: 'gray' }}>{item?.isMain === 1 ? "Main contact" : ""}</Typography>
+            <Typography variant="body2" sx={{ textAlign: 'center', mb: 2 }}>{item?.address}</Typography>
+            <Divider sx={{ my: 2 }} />
+
+            {/* Name */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>Name</Typography>
+            <Typography variant="body1">{item?.firstName} {item?.lastName}</Typography>
+
+            {/* Role */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Role</Typography>
+            <Typography variant="body1">{item?.role}</Typography>
+
+            {/* Contact Type */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Contact Type</Typography>
+            <Typography variant="body1">{item?.contactType}</Typography>
+
+            {/* Preferred Language */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Preferred Language</Typography>
+            <Typography variant="body1">
+                <Flag code={getFlagCodeForLanguage(item?.contactDetails?.preferredLanguage)} style={{ width: 20, height: 15, marginRight: 8 }} />
+                {item?.contactDetails?.preferredLanguage}
+            </Typography>
+
+            {/* Phone */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Phone</Typography>
+            {item?.contactDetails.phoneNumbers.map((phone, index) => (
+                <Typography key={index} variant="body1">{phone.type} - {phone.number}</Typography>
+            ))}
+
+            {/* Email */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Email</Typography>
+            {item?.contactDetails.emails.map((email, index) => (
+                <Typography key={index} variant="body1">{email.type} - {email.email}</Typography>
+            ))}
+
+            {/* Mailing Address */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Mailing Address</Typography>
+            <Typography variant="body1">{item?.mailingAddress}</Typography>
+
+            {/* Billing Information */}
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Billing Information</Typography>
+            <Typography variant="body1">{item?.billingInformation}</Typography>
+
+
+
+
+
+
+            <Button variant="outlined" fullWidth onClick={() => setIsEditing(true)} sx={{ mt: 3 }}>Edit</Button>
+        </Box>
+    );
+
+
+
     //פונקציה שמופעלת על אובייקט שמועבר אליה בפרופס.
-    //אם היא קיבלה אוביקט שהוא null - נותנת לערוך את השדות
-    //אם היא קיבלה אובייקט היא מציגה את הנתונים שלו
-    //חלקם ניתנים לעריכה וחלקם לא
+    //     //אם היא קיבלה אוביקט שהוא null - נותנת לערוך את השדות
+    //     //אם היא קיבלה אובייקט היא מציגה את הנתונים שלו
+    //     //חלקם ניתנים לעריכה וחלקם לא
     const renderEditMode = () => (
         <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Avatar Section */}
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2, position: 'relative' }}>
                 <Avatar sx={{ width: 80, height: 80 }} src={item?.src || '/path/to/default/avatar.png'} />
                 <IconButton component="label" sx={{
@@ -98,6 +170,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                     />
                 </IconButton>
             </Box>
+
             <TextField
                 disabled={itemto}
                 label="First Name"
@@ -122,6 +195,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 helperText={errors.role ? errors.role.message : ""}
             />
 
+            {/* Preferred Language with Flag */}
             <Box sx={{ display: 'flex', gap: 1, mb: 2, alignItems: 'center' }}>
                 <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Preferred Language</Typography>
                 <Select
@@ -150,13 +224,15 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 </Select>
             </Box>
 
+            {/* Phone & Email Accordion */}
             <Accordion defaultExpanded={true}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel1a-header">
                     <Typography>Contact Details (Phone & Email)</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {item?.contactDetails?.phoneNumbers?.map((field, index) => (
-                        <Box disabled={itemto} key={index} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
+                    {/* Phone Numbers Section */}
+                    {phoneFields.map((field, index) => (
+                        <Box disabled={itemto} key={field.id} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
                             <PhoneIcon />
                             <TextField
                                 label="Phone"
@@ -171,13 +247,14 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                                 <MenuItem value="Home">Home</MenuItem>
                                 <MenuItem value="Mobile">Mobile</MenuItem>
                             </Select>
+                            <IconButton onClick={() => phoneRemove(index)}><EditIcon /></IconButton>
                         </Box>
                     ))}
-                    <Button startIcon={<AddIcon />} sx={{ mt: 1 }}>Add Phone</Button>
+                    <Button startIcon={<AddIcon />} onClick={() => phoneAppend({ number: '', type: '' })} sx={{ mt: 1 }}>Add Phone</Button>
 
                     {/* Emails Section */}
-                    {item?.contactDetails?.emails?.map((field, index) => (
-                        <Box disabled={itemto} key={index} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
+                    {emailFields.map((field, index) => (
+                        <Box disabled={itemto} key={field.id} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
                             <MailIcon />
                             <TextField
                                 label="Email"
@@ -195,20 +272,24 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                                 <MenuItem value="Personal">Personal</MenuItem>
                                 <MenuItem value="Other">Other</MenuItem>
                             </Select>
+                            <IconButton onClick={() => emailRemove(index)}><EditIcon /></IconButton>
                         </Box>
                     ))}
-                    <Button startIcon={<AddIcon />} sx={{ mt: 1 }}>Add Email</Button>
+                    <Button startIcon={<AddIcon />} onClick={() => emailAppend({ email: '', type: '' })} sx={{ mt: 1 }}>Add Email</Button>
                 </AccordionDetails>
             </Accordion>
 
+
+            {/* Mailing Address Accordion */}
             <Accordion defaultExpanded={false}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel1a-header">
                     <Typography>Mailing Address</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <TextField
-                        label="Address"
                         disabled={itemto}
+
+                        label="Address"
                         {...register("mailingAddress", { required: "Mailing Address is required" })}
                         fullWidth
                         margin="normal"
@@ -217,7 +298,9 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                     />
                     <TextField
                         disabled={itemto}
+
                         label="Comment"
+                        {...register("comment", { required: "Comment is required" })}
                         fullWidth
                         margin="normal"
                         error={!!errors.comment}
@@ -226,6 +309,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 </AccordionDetails>
             </Accordion>
 
+            {/* Billing Information Accordion */}
             <Accordion defaultExpanded={false}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel2a-header">
                     <Typography>Billing Information</Typography>
@@ -234,6 +318,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                     <TextField
                         disabled={itemto}
                         label="Name for Invoice"
+                        {...register("billingInformation", { required: "Billing Information is required" })}
                         fullWidth
                         margin="normal"
                         error={!!errors.billingInformation}
@@ -242,59 +327,15 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                 </AccordionDetails>
             </Accordion>
 
+
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
                 <Button variant="outlined" onClick={onCancel}>Cancel</Button>
                 <Button variant="contained" color="primary" type="submit">Save</Button>
             </Box>
         </form>
-    );
 
-    //פונקציה שמופעלת על פרמטר שמתקבל בפרופס ומציגה לו את כל הנתונים
-    //יש לה כפתור שמוביל לעריכה של הטופס
-    const renderViewMode = () => (
-        <Box sx={{ p: 2 }}>
-            <Avatar sx={{ width: 80, height: 80, mb: 2, mx: 'auto' }} >
-                <img src={item?.src} alt="Avatar" />
-            </Avatar>
-            <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'center' }}>Contact Details</Typography>
-            <Typography variant="body2" sx={{ textAlign: 'center', color: 'gray' }}>{item?.isMain === 1 ? "Main contact" : ""}</Typography>
-            <Typography variant="body2" sx={{ textAlign: 'center', mb: 2 }}>{item?.address}</Typography>
-            <Divider sx={{ my: 2 }} />
+    )
 
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>Name</Typography>
-            <Typography variant="body1">{item?.firstName} {item?.lastName}</Typography>
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Role</Typography>
-            <Typography variant="body1">{item?.role}</Typography>
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Contact Type</Typography>
-            <Typography variant="body1">{item?.contactType}</Typography>
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Preferred Language</Typography>
-            <Typography variant="body1">
-                <Flag code={getFlagCodeForLanguage(item?.contactDetails?.preferredLanguage)} style={{ width: 20, height: 15, marginRight: 8 }} />
-                {item?.contactDetails?.preferredLanguage}
-            </Typography>
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Phone</Typography>
-            {item?.contactDetails.phoneNumbers.map((phone, index) => (
-                <Typography key={index} variant="body1">{phone.type} - {phone.number}</Typography>
-            ))}
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Email</Typography>
-            {item?.contactDetails.emails.map((email, index) => (
-                <Typography key={index} variant="body1">{email.type} - {email.email}</Typography>
-            ))}
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Mailing Address</Typography>
-            <Typography variant="body1">{item?.mailingAddress}</Typography>
-
-            <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 2, mb: 1 }}>Billing Information</Typography>
-            <Typography variant="body1">{item?.billingInformation}</Typography>
-
-            <Button variant="outlined" fullWidth onClick={() => setIsEditing(true)} sx={{ mt: 3 }}>Edit</Button>
-        </Box>
-    );
 
     return (
         <Drawer
@@ -307,6 +348,7 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
                     <CloseIcon />
                 </IconButton>
                 {/* אם אתה על מצב עריכה או שאין לך אובייקט - תפעיל את העריכה- אחרת תציג את מצב ההצגה */}
+
                 {isEditing || !item ? renderEditMode() : renderViewMode()}
             </Box>
         </Drawer>
@@ -314,3 +356,13 @@ const ManegerPanel = ({ item, isModalOpen, setIsModalOpen }) => {
 };
 
 export default ManegerPanel;
+
+
+
+
+
+
+
+
+
+
